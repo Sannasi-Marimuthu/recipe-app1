@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchRecipes, fetchRecipesById } from "./utils/Api";
 import Loader from "./components/loader/Loader";
+import Header from "./components/header/Header";
 
 
 const App = () => {
@@ -31,12 +32,12 @@ useEffect(() => {
 },[])
 
   return <div>
-    Recipe App
+   <Header title={"Recipe App"} />
 
 
 
-    { loading ?  <Loader name={'React App is Loading'} /> :  recipes.map((data) => (
-        <h3 >{data.title}</h3>
+    { loading ?  <Loader name={'React App is Loading'} /> :  recipes.map((data,index) => (
+        <h3 key={index} >{data.title}</h3>
       ))}
 
       {/* <h3> {recipes.title} </h3> */}
